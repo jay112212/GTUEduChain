@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "538921769516",
+    "project_id": "gtu-educhain",
+    "storage_bucket": "gtu-educhain.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538921769516:android:74677980d7bd93a6854f89",
+        "android_client_info": {
+          "package_name": "com.gtu.gtueduchain"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJgSKtsIBIXQwuJgKlT58fO814Cgo0Ook"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
