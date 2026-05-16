@@ -11,7 +11,7 @@ sealed class BottomNavItem(
 ) {
     object Home : BottomNavItem("home", Icons.Outlined.Home, "Home")
     object Admin : BottomNavItem("admin", Icons.Outlined.Security, "Admin")
-    object Student : BottomNavItem("student", Icons.Outlined.School, "Student")   // ✅ FIXED
+    object Student : BottomNavItem("student", Icons.Outlined.School, "Student")   // TODO: FIXED
     object Verify : BottomNavItem("verify", Icons.Outlined.CheckCircle, "Verify")
     object Ledger : BottomNavItem("ledger", Icons.Outlined.Storage, "Ledger")
 }

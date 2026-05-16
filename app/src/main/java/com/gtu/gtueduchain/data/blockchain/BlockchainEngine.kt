@@ -75,7 +75,7 @@ class BlockchainEngine {
     fun getDegrees(): List<IssuedDegree> =
         blockchain.drop(1).map { it.data } // skip genesis
 
-    // ✅ NEW FUNCTION (Required by Repository)
+    //  NEW FUNCTION (Required by Repository)
     fun isChainValid(): Boolean {
 
         for (i in 1 until blockchain.size) {
