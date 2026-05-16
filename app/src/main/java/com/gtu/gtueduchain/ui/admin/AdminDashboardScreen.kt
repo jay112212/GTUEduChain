@@ -1,7 +1,7 @@
 package com.gtu.gtueduchain.ui.admin
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Logout
@@ -14,11 +14,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.gtu.gtueduchain.ui.admin.components.DegreeForm
-import com.gtu.gtueduchain.ui.common.AppScaffold
+import com.gtu.gtueduchain.navigation.Routes
 import com.gtu.gtueduchain.viewmodel.AdminAuthViewModel
 import com.gtu.gtueduchain.viewmodel.AdminViewModel
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,9 +41,7 @@ fun AdminDashboardScreen(
                 },
                 actions = {
                     IconButton(
-                        onClick = {
-                            authViewModel.logout()
-                        }
+                        onClick = { authViewModel.logout() }
                     ) {
                         Icon(
                             imageVector = Icons.Default.Logout,
@@ -57,60 +53,59 @@ fun AdminDashboardScreen(
         }
     ) { padding ->
 
-        LazyColumn(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
                 .padding(24.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
 
-            item {
-                Icon(
-                    Icons.Default.Add,
-                    contentDescription = null,
-                    modifier = Modifier.size(64.dp),
-                    tint = MaterialTheme.colorScheme.primary
-                )
+            Icon(
+                Icons.Default.Add,
+                contentDescription = null,
+                modifier = Modifier.size(80.dp),
+                tint = MaterialTheme.colorScheme.primary
+            )
 
-                Spacer(Modifier.height(16.dp))
+            Spacer(Modifier.height(24.dp))
 
-                Text(
-                    "Issue New Degree",
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold
-                )
+            Text(
+                "Issue New Degree",
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold
+            )
 
-                Text(
-                    "Fill student details to authorize and commit a new academic record.",
-                    fontSize = 14.sp,
-                    color = Color.Gray
-                )
+            Spacer(Modifier.height(8.dp))
 
-                Spacer(Modifier.height(32.dp))
+            Text(
+                "Create and commit a new blockchain academic record.",
+                fontSize = 14.sp,
+                color = Color.Gray
+            )
+
+            Spacer(Modifier.height(40.dp))
+
+            Button(
+                onClick = {
+                    navController.navigate(Routes.IssueDegree.route)
+                },
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(16.dp)
+            ) {
+                Icon(Icons.Default.Add, contentDescription = null)
+                Spacer(Modifier.width(8.dp))
+                Text("Start Issuing Degree")
             }
 
-            item {
-                DegreeForm(
-                    onIssue = { name, enroll, branch, cpi ->
-                        viewModel.issueDegree(
-                            name,
-                            enroll,
-                            branch,
-                            cpi,
-                            "10-02-2026"
-                        )
-                    },
-                    isLoading = viewModel.isIssuing
-                )
+            Spacer(Modifier.height(24.dp))
 
-                viewModel.error?.let {
-                    Spacer(Modifier.height(16.dp))
-                    Text(
-                        it,
-                        color = MaterialTheme.colorScheme.error
-                    )
-                }
+            viewModel.error?.let {
+                Text(
+                    text = it,
+                    color = MaterialTheme.colorScheme.error
+                )
             }
         }
     }

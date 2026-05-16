@@ -34,7 +34,7 @@ fun EnrollmentInput(
             onClick = { onSearch(enrollment) },
             enabled = !isLoading && enrollment.isNotBlank()
         ) {
-            Text(if (isLoading) "Searching Ledger..." else "Verify Degree")
+            Text(if (isLoading) "Searching Ledger..." else "Access GTU Portal")
         }
     }
 }

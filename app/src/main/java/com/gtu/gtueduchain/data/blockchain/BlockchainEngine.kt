@@ -12,10 +12,15 @@ class BlockchainEngine {
     }
 
     private fun createGenesisBlock() {
+
         val genesisDegree = IssuedDegree(
             name = "Genesis",
             enrollment = "0000",
             branch = "System",
+            program = "System",
+            specialization = "Genesis",
+            collegeName = "GTU System",
+            dob = "01-01-2000",
             cpi = "0",
             date = "01-01-2026",
             status = "GENESIS",
@@ -42,7 +47,8 @@ class BlockchainEngine {
         val timestamp = System.currentTimeMillis()
         val previousHash = previousBlock.hash
 
-        val rawData = "$index$timestamp${degree.enrollment}$previousHash"
+        val rawData =
+            "$index$timestamp${degree.enrollment}${degree.name}${degree.program}${degree.cpi}${degree.date}$previousHash"
         val hash = generateHash(rawData)
 
         val updatedDegree = degree.copy(

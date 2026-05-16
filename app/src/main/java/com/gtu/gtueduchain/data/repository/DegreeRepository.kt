@@ -1,6 +1,7 @@
 package com.gtu.gtueduchain.data.repository
 
 import com.gtu.gtueduchain.data.blockchain.Block
+import com.gtu.gtueduchain.data.model.IssueDegreeResult
 import com.gtu.gtueduchain.data.model.IssuedDegree
 
 interface DegreeRepository {
@@ -13,9 +14,13 @@ interface DegreeRepository {
         name: String,
         enrollment: String,
         branch: String,
+        program: String,
+        specialization: String,
+        collegeName: String,
+        dob: String,
         cpi: String,
         date: String
-    ): Boolean
+    ): IssueDegreeResult
 
     /**
      * Returns degree by enrollment number
@@ -31,6 +36,11 @@ interface DegreeRepository {
      * Returns total number of blockchain blocks
      */
     suspend fun getBlockCount(): Int
+
+    /**
+     * Returns the latest non-genesis block if present.
+     */
+    suspend fun getLatestBlock(): Block?
 
     /**
      * Returns all blocks including genesis

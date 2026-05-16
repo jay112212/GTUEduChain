@@ -65,6 +65,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
 
     implementation("com.google.firebase:firebase-auth-ktx")
+    implementation(libs.androidx.compose.animation.core)
+    implementation(libs.androidx.compose.ui.text)
 
 
     testImplementation(libs.junit)

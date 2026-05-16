@@ -53,7 +53,7 @@ fun AppTopBar(
                     text = { Text("Student") },
                     onClick = {
                         expanded = false
-                        navController.navigate("certificate")
+                        navController.navigate("student")
                     }
                 )
                 DropdownMenuItem(

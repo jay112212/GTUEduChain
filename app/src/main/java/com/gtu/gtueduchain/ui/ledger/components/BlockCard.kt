@@ -1,6 +1,7 @@
 package com.gtu.gtueduchain.ui.ledger.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,12 +22,14 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @Composable
-fun BlockCard(block: Block) {
+fun BlockCard(block: Block, onClick: () -> Unit) {
     val date = SimpleDateFormat("HH:mm:ss dd/MM/yy", Locale.getDefault()).format(Date(block.timestamp))
 
     Card(
         shape = RoundedCornerShape(16.dp),
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onClick() },
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         Column(Modifier.padding(16.dp)) {

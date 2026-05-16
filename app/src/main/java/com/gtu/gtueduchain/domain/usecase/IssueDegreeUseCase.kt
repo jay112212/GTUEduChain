@@ -1,5 +1,6 @@
 package com.gtu.gtueduchain.domain.usecase
 
+import com.gtu.gtueduchain.data.model.IssueDegreeResult
 import com.gtu.gtueduchain.data.repository.DegreeRepository
 
 class IssueDegreeUseCase(
@@ -10,17 +11,23 @@ class IssueDegreeUseCase(
         name: String,
         enrollment: String,
         branch: String,
+        program: String,
+        specialization: String,
+        collegeName: String,
+        dob: String,
         cpi: String,
         date: String
-    ): Boolean {
+    ): IssueDegreeResult {
         return repository.issueDegree(
-            name,
-            enrollment,
-            branch,
-            cpi,
-            date
+            name = name,
+            enrollment = enrollment,
+            branch = branch,
+            program = program,
+            specialization = specialization,
+            collegeName = collegeName,
+            dob = dob,
+            cpi = cpi,
+            date = date
         )
     }
-
 }
-
